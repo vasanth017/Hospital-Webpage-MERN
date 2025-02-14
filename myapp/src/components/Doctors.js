@@ -23,7 +23,7 @@ const Doctors = () => {
     useEffect(
         () => {
             axios
-                .get('http://192.168.1.200:5000/doctors')
+                .get('localhost:5000/doctors')
                 .then(
                     response =>
                         setDoctors(response.data))
@@ -38,7 +38,7 @@ const Doctors = () => {
             e.preventDefault();
             axios
                 .post(
-'http://192.168.1.200:5000/doctors/add', newDoctor)
+'localhost:5000/doctors/add', newDoctor)
                 .then(
                     response => {
                         console.log("doc", response.data);
@@ -63,8 +63,8 @@ const Doctors = () => {
         (id, e) => {
             e.preventDefault();
             axios
-                .post(
-`http://192.168.1.200:5000/doctors/update/${id}`, selectedDoctor)
+                .put(
+`localhost:5000/doctors/update/${id}`, selectedDoctor)
                 .then(response => {
                     const updateDoc = {
                         ...selectedDoctor,
@@ -88,7 +88,7 @@ const Doctors = () => {
 
     const handleDeleteDoctor = (id) => {
         axios.delete(
-`http://192.168.1.200:5000/doctors/delete/${id}`)
+`localhost:5000/doctors/delete/${id}`)
             .then(response => {
                 console.log(response.data);
                 setDoctors(
