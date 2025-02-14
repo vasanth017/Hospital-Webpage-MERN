@@ -24,7 +24,7 @@ const Appointments = () => {
     useEffect(() => {
         axios
             .get(
-'http://192.168.1.200:5000/appointments')
+'http://localhost:5000/appointments')
             .then(
                 response =>
                     setAppointments(response.data))
@@ -40,7 +40,7 @@ const Appointments = () => {
 
             axios
                 .post(
-'http://192.168.1.200:5000/appointments/add', newAppointment)
+'http://localhost:5000/appointments/add', newAppointment)
                 .then(response => {
                     console.log(response.data);
                     setAppointments(
@@ -62,7 +62,7 @@ const Appointments = () => {
             e.preventDefault();
             axios
                 .put(
-`http://192.168.1.200:5000/appointments/update/${id}`, selectedAppointment)
+`http://localhost:5000/appointments/update/${id}`, selectedAppointment)
                 .then(response => {
                     console.log(response.data);
                     const updateApp = {
@@ -88,7 +88,7 @@ const Appointments = () => {
         (id) => {
             axios
                 .delete(
-`http://192.168.1.200:5000/appointments/delete/${id}`)
+`http://localhost:5000/appointments/delete/${id}`)
                 .then(response => {
                     console.log(response.data);
                     setAppointments(
